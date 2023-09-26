@@ -5,6 +5,8 @@ import guru.springframework.sdjpaintro.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * Created by jt on 6/12/21.
  */
@@ -19,7 +21,9 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Book bookDDD = new Book("Domain Driven Design", "123", "RandomHouse");
+        System.out.println("INVOKING DATA-INITIALIZER RUN METHOD*******************");
+        String dateX = new Date().toString();
+        Book bookDDD = new Book("Domain Driven Design " + dateX, "123", "RandomHouse");
 
         System.out.println("Id: " + bookDDD.getId() );
 
@@ -27,7 +31,7 @@ public class DataInitializer implements CommandLineRunner {
 
         System.out.println("Id: " + savedDDD.getId() );
 
-        Book bookSIA = new Book("Spring In Action", "234234", "Oriely");
+        Book bookSIA = new Book("Spring In Action" + dateX, "234234", "Oriely");
         Book savedSIA = bookRepository.save(bookSIA);
 
         bookRepository.findAll().forEach(book -> {
